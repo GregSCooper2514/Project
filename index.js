@@ -20,14 +20,14 @@ function buy(id) {
     });
     let price = book.price;
     if (price <= balance) {
-        enough_money(price);
+        enough_money(price, book);
     }
     else {
         not_enough_money();
     }
 }
 ;
-function enough_money(price) {
+function enough_money(price, book) {
     bought_books = bought_books + 1;
     let book_counter = document.getElementById("book-counter");
     let booksintext = bought_books.toString();
@@ -37,6 +37,7 @@ function enough_money(price) {
     how_much.innerText = "На сумму " + money_spent.toString() + "₽";
     balance -= price;
     balanceset();
+    decrece_ammount(book);
 }
 function not_enough_money() {
     let no_money_text = document.getElementById("no-money");
@@ -50,3 +51,13 @@ books.forEach(function (book) {
     render(book.id, book.name, book.price);
     balanceset();
 });
+function decrece_ammount(book) {
+    let button = document.getElementById(book.id);
+    if (book.amount === 1) {
+        button.disabled = true;
+        books[book.id - 1].amount = 0;
+    }
+    else {
+        books[book.id - 1].amount -= 1;
+    }
+}
