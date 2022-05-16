@@ -14,21 +14,23 @@
 		<div class="site">
 			<div class="book-list">
 				<p class="main-title">Доступные книги</p>
-				<div class="selection">
+				<div class="selection" id="selection">
 					<div class="book-listing">
 						<div class="book-stats">
 							<p class="book-title">Совершенный код. Мастер-класс</p>
 							<p class="book-price">100</p>
 						</div>
-						<button class="buy-button">Купить</button>
+						<button class="buy-button" id="buy-button" onclick="counterupdate()">Купить</button>
 					</div>
 				</div>
 			</div>
 			<div class="profile">
 				<p class="profile-title">Личный кабинет</p>
-				<p class="balance">Баланс 555</p>
-				<p class="check">Вы купили 2 книги на сумму 280</p>
+				<p class="balance" id="bal">Баланс</p>
+				<p class="book-counter" id="book-counter">Вы купили 0 книги</p>
+				<p class="how-much">На сумму 280</p>
 			</div>
 		</div>
+		<script src="index.js"></script>
 	</body>
 </html>

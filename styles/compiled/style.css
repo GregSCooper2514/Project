@@ -99,6 +99,11 @@ p {
   font-weight: 500;
 }
 
-.check {
+.book_counter {
+  font-weight: 500;
+  display: inline-block;
+}
+
+.how_much {
   font-weight: 500;
 }
