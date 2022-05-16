@@ -4,17 +4,25 @@ const books = [{id: 1, name: 'Совершенный код. Мастер-кла
 {id: 3, name: 'Искусство программирования, Д.Кнут', price: 210, amount: 1},];
 let bought_books = 0;
 let money_spent = 0;
+// Функция для обновления баланса
 function balanceset() {
     let element = document.getElementById("bal");
     element.innerText = "Баланс " + balance.toString();
 };
+// Функция для рендера одной книги
 function render(id, name, price) {
     let element = document.getElementById("selection");
     element.insertAdjacentHTML("beforeend", "<div class='book-listing'><div class='book-stats'><p class='book-title'>" + name + "</p><p class='book-price'>Цена: " + price + "₽</p></div><button class='buy-button' id='" + id + "' onclick='buy(" + id + ")'>Купить</button></div>");
 };
+//Прохрд по списку с книгами, вызов функции рендера и обновления баланса
+books.forEach(function(book) {
+    render(book.id, book.name, book.price);
+    balanceset();
+});
+//Функция для обработки нажатия кнопки купить
 function buy(id) {
     let book = Object.values(books).find((obj) => {
-        return obj.id == id
+        return obj.id == id;
     });
     let price = book.price;
     if (price <= balance) {
@@ -23,6 +31,7 @@ function buy(id) {
         not_enough_money();
     }
 };
+//Функция обработки сценария когда на балансе достаточно средств
 function enough_money(price, book) {
     bought_books = bought_books + 1;
     let book_counter = document.getElementById("book-counter");
@@ -34,8 +43,8 @@ function enough_money(price, book) {
     balance -= price;
     balanceset();
     decrece_ammount(book);
-
 }
+//Функция обраьотки сценария когда на балансе недостаточно средств
 function not_enough_money() {
     let no_money_text = document.getElementById("no-money");
     no_money_text.innerText = "Недостаточно средств для покупки!";
@@ -43,16 +52,13 @@ function not_enough_money() {
         no_money_text.remove();
     }, 2000);
 };
-books.forEach(function(book) {
-    render(book.id, book.name, book.price);
-    balanceset();
-});
+//Функция работы с колличеством книг
 function decrece_ammount(book) {
-    let button = document.getElementById(book.id)
+    let button = document.getElementById(book.id) as HTMLButtonElement;
     if (book.amount === 1) {
-        button.disabled = true
-        books[book.id - 1].amount = 0
+        button.disabled = true ;
+        books[book.id - 1].amount = 0;
     } else {
-        books[book.id - 1].amount -= 1
-    }
+        books[book.id - 1].amount -= 1;
+    };
 }
