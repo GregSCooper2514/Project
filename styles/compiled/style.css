@@ -108,3 +108,9 @@ p {
 .how_much {
   font-weight: 500;
 }
+
+.no-money {
+  margin-top: 10px;
+  color: red;
+  font-size: 20px;
+}

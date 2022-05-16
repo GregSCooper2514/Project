@@ -13,20 +13,35 @@ function render(id, name, price) {
     element.insertAdjacentHTML("beforeend", "<div class='book-listing'><div class='book-stats'><p class='book-title'>" + name + "</p><p class='book-price'>Цена: " + price + "₽</p></div><button class='buy-button' id='" + id + "' onclick='buy(" + id + ")'>Купить</button></div>");
 };
 function buy(id) {
-    bought_books = bought_books + 1
-    let element = document.getElementById("book-counter");
-    let booksintext = bought_books.toString();
-    element.innerText = "Вы купили " + booksintext + " книги";
     let book = Object.values(books).find((obj) => {
         return obj.id == id
     });
-    let element2 = document.getElementById("how-much");
-    money_spent += book.price
-    element2.innerText ="На сумму " + money_spent.toString() + "₽";
-    balance -= book.price
-    balanceset()
+    let price = book.price;
+    if (price <= balance) {
+        enough_money(price);
+    } else {
+        not_enough_money()
+    }
+};
+function enough_money(price) {
+    bought_books = bought_books + 1;
+    let book_counter = document.getElementById("book-counter");
+    let booksintext = bought_books.toString();
+    book_counter.innerText = "Вы купили " + booksintext + " книги";
+    let how_much = document.getElementById("how-much");
+    money_spent += price;
+    how_much.innerText ="На сумму " + money_spent.toString() + "₽";
+    balance -= price;
+    balanceset();
+}
+function not_enough_money() {
+    let no_money_text = document.getElementById("no-money");
+    no_money_text.innerText = "Недостаточно средств для покупки!";
+    setTimeout(function() {
+        no_money_text.remove();
+    }, 2000);
 };
 books.forEach(function(book) {
     render(book.id, book.name, book.price);
-    balanceset()
+    balanceset();
 });
