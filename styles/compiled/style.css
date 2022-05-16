@@ -1,0 +1,104 @@
+p {
+  margin: 0;
+  font-family: Roboto, Arial;
+}
+
+.site {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.book-list {
+  padding-left: 1px;
+  width: 500px;
+  margin-right: 100px;
+  border-right: solid;
+  border-color: black;
+  display: inline-block;
+}
+
+.selection {
+  display: inline-block;
+}
+
+.main-title {
+  font-weight: bold;
+  font-size: 40px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile {
+  display: inline-block;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.book-stats {
+  display: inline-block;
+}
+
+.book-listing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 90px;
+  border: solid;
+  border-color: black;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.book-title {
+  font-weight: bold;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.book-price {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.buy-button {
+  margin-left: 100px;
+  margin-right: 10px;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile-title {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.balance {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.check {
+  font-weight: 500;
+}
