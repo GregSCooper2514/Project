@@ -9,10 +9,12 @@ function balanceset() {
     let element = document.getElementById("bal");
     element.innerText = "Баланс " + balance.toString();
 }
-function render() {
+;
+function render(id, name, price) {
     let element = document.getElementById("selection");
-    element.innerHTML = "div class='book-listing'><div class='book-stats'><p class='book-title'>Совершенный код. Мастер-класс</p><p class='book-price'>100</p></div><button class='buy-button' id='buy-button' onclick='counterupdate()'>[[[[[</button></div>";
+    element.insertAdjacentHTML("beforeend", "<div class='book-listing'><div class='book-stats'><p class='book-title'>" + name + "</p><p class='book-price'>Цена: " + price + "₽</p></div><button class='buy-button' id='buy-button" + id + "' onclick='counterupdate()'>Купить</button></div>");
 }
+;
 function counterupdate() {
     bought_books = bought_books + 1;
     let element = document.getElementById("book-counter");
@@ -20,4 +22,6 @@ function counterupdate() {
     element.innerText = "Вы купили " + booksintext + " книги";
 }
 ;
-render();
+books.forEach(function (book) {
+    render(book.id, book.name, book.price);
+});
